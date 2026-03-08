@@ -115,11 +115,11 @@ const App = () => {
                     className="relative h-52  w-40 rounded-2xl px-7 py-4 bg-cover p-4 text-black"
                   >
                     {/* Scrollable content */}
-                    <div className="overflow-y-auto scrllbar overflow-x-hidden h-full pr-2 pb-12">
-                      <h1 className="font-sans font-semibold text-base leading-tight text-black break-words">
+                    <div className="overflow-y-auto breakwords scrllbar overflow-x-hidden h-full pr-2 pb-12">
+                      <h1 className="font-sans font-semibold text-base leading-tight text-black ">
                         {elem.Title}
                       </h1>
-                      <p className="mt-1.5 text-sm font-medium leading-tight text-gray-700 break-words">
+                      <p className="mt-1.5 text-sm font-medium leading-tight text-gray-700 ">
                         {elem.Detail}
                       </p>
                     </div>
@@ -134,7 +134,7 @@ const App = () => {
                                 flex items-center px-2 py-2
                                 bg-red-600 text-white font-semibold text-lg rounded-lg
                                 shadow-md hover:bg-red-700 hover:shadow-lg 
-                                transition-colors transition-shadow duration-200 ease-out
+                                transition-colors transitionShadow duration-200 ease-out
                                 active:scale-90"
                       >
                         <Trash2 size={20} strokeWidth={2.5} />

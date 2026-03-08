@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Notes Web App (React + Tailwind + CSS)
 
 Welcome to **Notes Web App** a sleek, interactive, and modern note-taking application built with **React**, and **Tailwind CSS**.  
@@ -68,3 +69,7 @@ Open your browser and go to:
 ```
 http://localhost:5173
 ```
+=======
+# NotesWebApp-React
+A simple and responsive notes app built with React and Tailwind CSS.
+>>>>>>> 87de5f927bde2889d6715c762cd66880f9c74a3b
