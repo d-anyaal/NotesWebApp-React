@@ -1,10 +1,10 @@
 import React from "react";
 import notes from "./assets/notes.jpg";
-import notes1 from "./assets/notespic.jpg";
 import notePage from "./assets/notepage.jpg";
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
 import { AlertCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 const App = () => {
   const [OldTask, setOldTask] = useState([]);
   const [Error, setError] = useState("");
@@ -12,8 +12,8 @@ const App = () => {
     e.preventDefault();
     if (Title === "" || Detail === "") {
       setError(
-        <span className="error-message">
-          <AlertCircle size={18} color="#d8000c" />
+        <span className="flex items-center gap-2 font-medium ">
+          <AlertCircle size={18} />
           Please provide both a task title and details.
         </span>,
       );
@@ -36,12 +36,22 @@ const App = () => {
 
   const [Title, setTitle] = useState("");
   const [Detail, setDetail] = useState("");
+  const [Success, setSuccess] = useState("");
 
   const DeleteNote = (idx) => {
     const copyTask = [...OldTask];
     // console.log(copyTask[idx]);//copyTask ky flan index pr jo card hai wo hmyn do
     copyTask.splice(idx, 1); //ye delete kry ga mean jis btn pr click hoka oska index idx ky through isy mily ga ye os index sy 1 number tak mean wo index wala card delete kr dy ga
     setOldTask(copyTask); //copyTask me sy delete krny ky bad wo new updated copyTask oldtask me set krdo, qky set hogi to remove hony ky bad webpage pr show hogi
+    setSuccess(
+      <span className="flex items-center gap-2 font-medium">
+        <CheckCircle size={18} />
+        Note deleted successfully
+      </span>,
+    );
+    setTimeout(() => {
+      setSuccess("");
+    }, 2000);
   };
 
   return (
@@ -59,6 +69,8 @@ const App = () => {
           <form className="flex lg:w-1/2 justify-between items-start flex-col gap-8 p-8">
             {/* ERROR MESSAGE */}
             {Error && <div className="error-container">{Error}</div>}
+            {/* Success MESSAGE */}
+            {Success && <div className="success-container">{Success}</div>}
 
             <h1 className="text-3xl font-bold">Add Notes</h1>
             <input
@@ -91,7 +103,7 @@ const App = () => {
               Add Notes
             </button>
           </form>
-          <div className="scrllbar lg:border-l-2 lg:w-1/2 max-h-[82vh]  overflow-y-auto p-8">
+          <div className="scrllbar lg:border-l-2 lg:w-1/2 max-h-[90vh]  overflow-y-auto p-8">
             <h1 className="text-3xl font-bold">Recent Notes</h1>
             <div className="flex flex-wrap items-start justify-start  gap-5 mt-5 overflow-auto">
               {OldTask.map(function (elem, idx) {
@@ -100,12 +112,14 @@ const App = () => {
                   <div
                     key={idx}
                     style={{ backgroundImage: `url(${notePage})` }}
-                    className="relative h-52  w-40 rounded-2xl px-7 py-3 bg-cover p-4 text-black"
+                    className="relative h-52  w-40 rounded-2xl px-7 py-4 bg-cover p-4 text-black"
                   >
                     {/* Scrollable content */}
                     <div className="overflow-y-auto scrllbar overflow-x-hidden h-full pr-2 pb-12">
-                      <h1 className="font-bold break-words">{elem.Title}</h1>
-                      <p className="mt-1.5 text-gray-500 font-medium leading-tight break-words">
+                      <h1 className="font-sans font-semibold text-base leading-tight text-black break-words">
+                        {elem.Title}
+                      </h1>
+                      <p className="mt-1.5 text-sm font-medium leading-tight text-gray-700 break-words">
                         {elem.Detail}
                       </p>
                     </div>
